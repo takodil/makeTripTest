@@ -7,7 +7,8 @@
 
 2. Install dependencies
 
-    ```mvn install
+    ```sh
+    $ mvn install
     ```
 
 3. Here’s how you run test locally with default browser chrome
