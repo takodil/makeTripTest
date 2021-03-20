@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="End2End Test Desktop" thread-count="1" parallel="methods">
+    <test name="Chrome windows">
+        <parameter name="config" value="browsers.conf.json" />
+        <parameter name="environment" value="chrome-windows" />
+        <classes>
+            <class name="com.testtribe.e2etest.tests.AnonymousUserTest"/>
+        </classes>
+    </test>
+</suite>

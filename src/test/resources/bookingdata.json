@@ -1,0 +1,22 @@
+[
+  {
+    "minPrice": 2000,
+    "type": "Work",
+    "userRating": "4 & above",
+    "search": {
+      "departureCity": "Mumbai",
+      "checkInDate": 2,
+      "checkOutDate": 3,
+      "guest": {
+        "roomNum": 1,
+        "adultNum": 3,
+        "childrenNum": 3,
+        "childrenAge": [
+          4,
+          1,
+          2
+        ]
+      }
+    }
+  }
+]
