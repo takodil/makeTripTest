@@ -16,3 +16,9 @@
     ```sh
     $ mvn clean test -P e2e -Dbrowser_env=local
     ```
+   
+4. Here’s how you open report
+
+    ```sh
+    $ allure serve target/allure-results
+    ```  
