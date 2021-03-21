@@ -30,7 +30,7 @@ public class SearchResultPage extends BasePage {
     By guestInput = By.xpath("//input[@id='guest']");
 
     public void moveMinPriceFilterSlider(double minPrice) {
-        waitUntilAllElementVisible(popularItemShowMore);
+        retryUntilUpdatedVisible(10, popularItemShowMore);
         scrollToElement(popularItemShowMore);
         waitUntilElementClickable(priceFilterDiv);
         WebElement slider = driver.findElement(priceFilterDiv);
@@ -75,9 +75,9 @@ public class SearchResultPage extends BasePage {
 
 
     private int calculateDate(String valueFromPage) {
-        String today = new SimpleDateFormat("EEE, dd MMM yyyy").format(new Date());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE, dd MMM yyyy");
-        SimpleDateFormat sdf = new SimpleDateFormat("EEE, dd MMM yyyy", Locale.ENGLISH);
+        String today = new SimpleDateFormat("EEE, d MMM yyyy").format(new Date());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE, d MMM yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy", Locale.ENGLISH);
         String dateFromPage = LocalDate.parse(valueFromPage, formatter).format(formatter);
 
         Date firstDate = null;
@@ -137,7 +137,7 @@ public class SearchResultPage extends BasePage {
 
         BookingBO actualBooking = new BookingBO();
         actualBooking.setSearch(actualSearch);
-        actualBooking.setProduct(actualGuest);
+        actualBooking.setGuest(actualGuest);
         return actualBooking;
     }
 }

@@ -50,13 +50,14 @@ public class BasePage {
     }
 
     protected void clickLinkButtonByElementWithJS(WebElement element) {
+        webDriverWait.ignoring(StaleElementReferenceException.class).until(ExpectedConditions.elementToBeClickable(element));
         try {
+            logger.info("Clicking now element  with JS" + element);
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
         } catch (StaleElementReferenceException e) {
             logger.error("Error stale element " + element);
             clickLinkButtonByElementWithJS(element);
         }
-        logger.info("Clicking now element  " + element);
     }
 
     protected void sendKeysTextField(By locator, String keys) {

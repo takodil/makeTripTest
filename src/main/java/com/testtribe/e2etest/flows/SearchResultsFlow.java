@@ -26,7 +26,8 @@ public class SearchResultsFlow {
     @Step("Applying user rating filter.")
     public static void selectHotel() {
         SearchResultPage searchResultPage = new SearchResultPage();
-        searchResultPage.selectHotel(5);
+        int hotelOrder = 3;
+        searchResultPage.selectHotel(hotelOrder);
         try {
             ReportingHelper.takeScreenShotToReport("selectHotel", DriverFactory.getCurrentDriver());
         } catch (IOException e) {
@@ -37,17 +38,12 @@ public class SearchResultsFlow {
     @Step("Asserting search parameters.")
     public static void assertSearchParameters(BookingBO expectedBooking) {
         SearchResultPage searchResultPage = new SearchResultPage();
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         BookingBO actualBooking = searchResultPage.buildSearchParameters();
         Assert.assertTrue(actualBooking.search.departureCity.equals(expectedBooking.search.departureCity));
         Assert.assertEquals(actualBooking.search.checkInDate, expectedBooking.search.checkInDate);
         Assert.assertEquals(actualBooking.search.checkOutDate, expectedBooking.search.checkOutDate);
-        Assert.assertEquals(actualBooking.product.childrenAge.length, expectedBooking.product.childrenAge.length);
-        Assert.assertEquals(actualBooking.product.adultNum, expectedBooking.product.adultNum);
-        Assert.assertEquals(actualBooking.product.roomNum, expectedBooking.product.roomNum);
+        Assert.assertEquals(actualBooking.guest.childrenAge.length, expectedBooking.guest.childrenAge.length);
+        Assert.assertEquals(actualBooking.guest.adultNum, expectedBooking.guest.adultNum);
+        Assert.assertEquals(actualBooking.guest.roomNum, expectedBooking.guest.roomNum);
     }
 }

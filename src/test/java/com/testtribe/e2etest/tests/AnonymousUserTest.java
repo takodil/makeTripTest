@@ -1,6 +1,7 @@
 package com.testtribe.e2etest.tests;
 
 import com.testtribe.e2etest.dataproviders.Booking;
+import com.testtribe.e2etest.flows.CheckoutPageFlow;
 import com.testtribe.e2etest.flows.HomePageFlow;
 import com.testtribe.e2etest.flows.HotelDetailsFlow;
 import com.testtribe.e2etest.flows.SearchResultsFlow;
@@ -19,7 +20,7 @@ public class AnonymousUserTest extends BaseTest{
         HomePageFlow.launchHomepage();
         HomePageFlow.openHotel();
         HomePageFlow.enterSearchParameters(booking.search);
-        HomePageFlow.enterProductsParameters(booking.product);
+        HomePageFlow.enterProductsParameters(booking.guest);
         HomePageFlow.selectTripType(booking.type);
         HomePageFlow.performSearch();
 
@@ -29,7 +30,9 @@ public class AnonymousUserTest extends BaseTest{
         SearchResultsFlow.selectHotel();
 
         HotelDetailsFlow.printRecommendedCombo();
-        HotelDetailsFlow.selectCombo(booking.product);
+        HotelDetailsFlow.selectCombo(booking.guest);
+
+        CheckoutPageFlow.assertBooking(booking);
 
     }
 }

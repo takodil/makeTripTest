@@ -5,14 +5,14 @@ public class BookingBO {
     public String type;
     public String userRating;
     public SearchBO search;
-    public GuestBO product;
+    public GuestBO guest;
 
     public void setType(String type) {
         this.type = type;
     }
 
-    public void setProduct(GuestBO product) {
-        this.product = product;
+    public void setGuest(GuestBO guest) {
+        this.guest = guest;
     }
 
     public void setUserRating(String userRating) {
