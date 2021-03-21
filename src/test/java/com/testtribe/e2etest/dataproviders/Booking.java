@@ -10,8 +10,8 @@ public class Booking {
     public static Object[][] validSearch() {
         SearchBO search = new SearchBO();
         search.setDepartureCity("Mumbai");
-        search.setCheckInDate(3);
-        search.setCheckOutDate(6);
+        search.setCheckInDate(15);
+        search.setCheckOutDate(16);
 
         int[] childrenAge = new int[] {4,1,2};
 

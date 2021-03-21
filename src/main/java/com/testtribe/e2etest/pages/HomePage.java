@@ -24,11 +24,7 @@ public class HomePage extends BasePage {
     By suggestionList = By.xpath("//ul[contains(@class, 'react-autosuggest__suggestions-list')]");
     By searchBtn = By.id("hsw_search_button");
     By loginPopUpDiv = By.xpath("//li[@data-cy='account']//div[contains(@class, 'autopop')]");
-    By loginLinkDiv = By.xpath("//li[@data-cy='account']");
-    By loginInput = By.id("username");
-    By passwordInput = By.id("password");
-    By continueButton = By.xpath("//button[@data-cy='continueBtn']/parent::div");
-    By loginButton = By.xpath("//button[@data-cy='login']/parent::div");
+    By loginHeader = By.xpath("//li[@data-cy='account']");
     By hotelTabList = By.xpath("//li[@data-cy='menu_Hotels']");
     By guestDiv = By.xpath("//div[contains(@class, 'roomGuests')]");
     By adultCountUl = By.xpath("//ul[contains(@data-cy,'adultCount')]");
@@ -110,17 +106,18 @@ public class HomePage extends BasePage {
         String today = new SimpleDateFormat("MMM dd yyyy").format(new Date());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd yyyy");
         String desiredDate = LocalDate.parse(today, formatter).plusDays(date).format(formatter);
+        logger.info("Calculated date is " + desiredDate);
         return desiredDate;
     }
     public void closeLoginPopUp() {
+        try {
+            Thread.sleep(20000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         if (driver.findElements(loginPopUpDiv).size() > 0) {
             logger.info("Login pop up is displayed. Closing it.");
-            Dimension window = driver.manage().window().getSize();
-            new Actions(driver)
-                    .moveByOffset(window.getHeight() / 2, window.getWidth() / 2)
-                    .click()
-                    .build()
-                    .perform();
+            clickLinkButton(loginHeader);
         }
 
     }
